@@ -49,16 +49,16 @@ const ico = {
     golos.broadcast.assetIssue(wif, options.issuer, `${options.amount} ${options.assetName}`, options.issuer, '', [], callback);
   },
 
-  //ico.sendToMarket({password: '', issuer: 'melnikaite', amountGolos: 2, amountAsset: '100.000', assetName: 'AAAAAAAA', expiration: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}, console.log);
+  //ico.sendToMarket({password: '', issuer: 'melnikaite', amountGolos: 2, amountAsset: 100, assetName: 'AAAAAAAA', expiration: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}, console.log);
   sendToMarket: (options, callback) => {
     const wif = golos.auth.toWif(options.issuer, options.password, 'active');
-    golos.broadcast.limitOrderCreate(wif, options.issuer, Date.now(), `${options.amountGolos} GOLOS`, `${options.amountAsset} ${options.assetName}`, false, options.expiration, callback);
+    golos.broadcast.limitOrderCreate(wif, options.issuer, Math.round(Date.now() / 1000), `${options.amountGolos}.000 GOLOS`, `${options.amountAsset}.000 ${options.assetName}`, false, options.expiration, callback);
   },
 
-  //ico.sendToMarket({password: '', issuer: 'melnikaite', amountGolos: 2, amountAsset: '100.000', assetName: 'AAAAAAAA', expiration: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}, console.log);
+  //ico.sendToMarket({password: '', issuer: 'melnikaite', amountGolos: 2, amountAsset: 100, assetName: 'AAAAAAAA', expiration: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}, console.log);
   buyFromMarket: (options, callback) => {
     const wif = golos.auth.toWif(options.issuer, options.password, 'active');
-    golos.broadcast.limitOrderCreate(wif, options.issuer, Date.now(), `${options.amountAsset} ${options.assetName}`, `${options.amountGolos} GOLOS`, false, options.expiration, callback);
+    golos.broadcast.limitOrderCreate(wif, options.issuer, Math.round(Date.now() / 1000), `${options.amountAsset}.000 ${options.assetName}`, `${options.amountGolos}.000 GOLOS`, false, options.expiration, callback);
   },
 
   //todo: get_limit_orders_by_owner/ getorderbook
