@@ -2,66 +2,111 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<link href="./style.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container">
-			<h1>Registration</h1>
-			<form method="POST" enctype="multipart/form-data">
-				<div class="form-group">
-					<label class="custom-file">
-						<input type="file" id="file2" class="custom-file-input">
-						<span class="custom-file-control"></span>
-					</label>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a class="navbar-brand" href="#">GolosICO</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Projects <span class="sr-only">(current)</span></a>
+						</li>
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Create campaign</button>
+					</ul>
 				</div>
-				<div class="form-group">
-					<label for="exampleFormControlSelect1">Type of campaign</label>
-					<select class="form-control" id="exampleFormControlSelect1">
-						<option>Choose the type of campaign</option>
-						<option>ICO</option>
-						<option>PreICO</option>
-					</select>
-					<div class="select-arrow"></div> 
+			</nav>
+		</header>
+		<main role="main" class="container">
+			<div id="create_campaign">
+				<h1>Start building your campaign!</h1>
+				<form method="POST" enctype="multipart/form-data">
+					<div class="form-group">
+						<label class="custom-file">
+							<input type="file" id="file2" class="custom-file-input">
+							<span class="custom-file-control"></span>
+						</label>
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Type of campaign</label>
+						<select class="form-control" id="exampleFormControlSelect1">
+							<option>Choose the type of campaign</option>
+							<option>ICO</option>
+							<option>PreICO</option>
+						</select>
+						<div class="select-arrow"></div> 
+					</div>
+					<div class="form-group">
+						<label for="campaignname">Campaign name</label>
+						<input type="text" class="form-control" id="campaignname" placeholder="Campaign name">
+					</div>
+					<div class="form-group">
+						<label for="shotdescription">Shot description</label>
+						<input type="text" class="form-control" id="shotdescription" placeholder="Shot description">
+					</div>
+					<div class="form-group">
+						<label for="softcap">Soft cap</label>
+						<input type="number" class="form-control" id="softcap">
+					</div>
+					<div class="form-group">
+						<label for="video"> Link to the campaign video</label>
+						<input type="url" class="form-control" id="video">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlTextarea1">Compaign description</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="location">Location</label>
+						<input type="text" class="form-control" id="location">
+					</div>
+					<div class="form-group">
+						<label for="facebook">Facebook</label>
+						<input type="url" class="form-control" id="facebook">
+					</div>
+					<div class="form-group">
+						<label for="google">Google+</label>
+						<input type="url" class="form-control" id="google">
+					</div>
+					<div class="form-group">
+						<label for="linkedin">Linkedin</label>
+						<input type="url" class="form-control" id="linkedin">
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			<div id="projects">
+				<div class="row">
+					<div class="col-4">
+						<img src="https://www.kickico.com/assets/_images/44435/45d7bae62096468.png" width="100" height="100" />
+					</div>
+					<div class="col-8">
+						<div class="row">
+							Title
+						</div>
+						<div class="row">
+							Author
+						</div>
+						<div class="row">
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+						</div>
+						<div class="row">
+							<progress value="10" max="100"></progress>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="campaignname">Campaign name</label>
-					<input type="text" class="form-control" id="campaignname" placeholder="Campaignname">
-				</div>
-				<div class="form-group">
-					<label for="shotdescription">Shot description</label>
-					<input type="text" class="form-control" id="shotdescription" placeholder="Shot description">
-				</div>
-				<div class="form-group">
-					<label for="softcap">Soft cap</label>
-					<input type="number" class="form-control" id="softcap">
-				</div>
-				<div class="form-group">
-					<label for="video"> Link to the campaign video</label>
-					<input type="url" class="form-control" id="video">
-				</div>
-				<div class="form-group">
-					<label for="exampleFormControlTextarea1">Compaign description</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="form-group">
-					<label for="location">Location</label>
-					<input type="text" class="form-control" id="location">
-				</div>
-				<div class="form-group">
-					<label for="facebook">Facebook</label>
-					<input type="url" class="form-control" id="facebook">
-				</div>
-				<div class="form-group">
-					<label for="google">Google+</label>
-					<input type="url" class="form-control" id="google">
-				</div>
-				<div class="form-group">
-					<label for="linkedin">Linkedin</label>
-					<input type="url" class="form-control" id="linkedin">
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form>
+			</div>
 			<br>
-		</div>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<span class="text-muted">GolosICO @ 2017</span>
+			</div>
+		</footer>
 	</body>
 </html>
 
