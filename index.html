@@ -1,3 +1,76 @@
+<!DOCTYPE html>
+<html>
+<div class="container">
+ 
+    <h1>Registration</h1>
+  <p>
+  Download your card image
+  </p>
+   <form method="POST" enctype="multipart/form-data">
+            <input name="user-file" type="file">
+            <br><br>
+            <input type="submit" value="Download">
+        </form>
+  <form>
+ <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Choose the type of campaign</option>
+      <option>ICO</option>
+      <option>PreICO</option> 
+    </select>
+     <div class="select-arrow"></div> 
+     <div class="form-group">
+    <label for="campanyname">Campaign name</label>
+    <input type="text" class="form-control" id="campaignname" placeholder="Campaignname">
+  </div>
+  
+  <div class="form-group">
+    <label for="shotdescription">Shot description</label>
+    <input type="text" class="form-control" id="campaignname" placeholder="Shot description">
+  </div> 
+  
+   <div class="form-group">
+    <label for="softcap">Soft cap</label>
+    <input type="number" class="form-control" id="softcap">
+  </div>
+  
+   <div class="form-group">
+    <label for="video"> Link to the campaign video</label>
+    <input type="url" class="form-control" id="video">
+  </div>
+  
+     <div class="form-group">
+    <label for="exampleFormControlTextarea1">Compaign description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+      <div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" class="form-control" id="location">
+  </div>
+  
+   <div class="form-group">
+    <label for="facebook">Facebook</label>
+    <input type="url" class="form-control" id="facebook">
+  </div>
+   <div class="form-group">
+    <label for="google">Google+</label>
+    <input type="url" class="form-control" id="google">
+  </div>
+   <div class="form-group">
+    <label for="linkedin">Linkedin</label>
+    <input type="url" class="form-control" id="linkedin">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+ 
+</div>
+ </html>
+</div>
+
+</html>
+
 <script src='./golos.min.js'></script>
 <script>
   window.addEventListener('load', (event) => {
