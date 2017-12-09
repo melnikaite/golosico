@@ -3,6 +3,46 @@ golos.config.set('address_prefix', 'GLS');
 golos.config.set('chain_id', '5876894a41e6361bde2e73278f07340f2eb8b41c2facd29099de9deef6cdb679');
 
 const ico = {
+	
+	getProjects: (callback) => {
+		golos.api.getDiscussionsByTrending({select_tags: ['golosico'], limit: 100}, function(err, result) {
+			if (err) console.error(err);
+			else {
+				let array = [];
+				for (let i = 0; i < result.length; i++) {
+					result[i].permlink = result[i].permlink.replace(/proekt-/g, '');
+					result[i] = ico.extractUnnecessary(result[i]);
+					// remove all html tags
+					result[i].body = result[i].body.replace(/<(?:.|\n)*?>/gm, '');
+					//console.log(result[i].body);
+					// trim string length by word coun || cut with words count
+					result[i].body = result[i].body.split('.').splice(0, 2).join('.').concat('...');
+					let metadata = JSON.parse(result[i].json_metadata),
+						image;
+					if (metadata.image) image = imgUrlReplace(metadata.image[0]);
+					array.push({
+						permlink: 'ru/projects/' + result[i].permlink,
+						created: result[i].created,
+						title: result[i].title,
+						body: result[i].body,
+						image: image
+					});
+				}
+				callback(array);
+			}
+		});
+	},
+
+	extractUnnecessary: (result) => {
+		result.title = result.title.replace(/Проект: "/g, '').replace(/"/g, '');
+		//result.body = result.body.replace(/"Этот пост является контентом для платформы \[''\]\(https:\/\/''.com\)"/g, '');
+		result.body = result.body.replace(/<p>"Этот пост является контентом для платформы <a href="https:\/\/''.com">''<\/a>"<\/p>/g, '');
+		result.body = result.body.replace(/<p>"Этот пост является контентом для платформы <a href="https:\/\/''.com">''"<\/a><\/p>/g, '');
+		result.body = result.body.replace(/(<html>|<\/html>)/g, '');
+		return result;
+	},
+	
+	
   //ico.createPost({password: '', author: 'melnikaite', maintag: 'maintag', permalink: 'permalink', title: 'title', body: 'body'}, console.log);
   createPost: (options, callback) => {
     const wif = golos.auth.toWif(options.author, options.password, 'posting');
