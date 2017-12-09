@@ -1,16 +1,15 @@
-  window.addEventListener('load', (event) => {
-    golos.config.set('websocket', 'wss://ws.testnet.golos.io');
+golos.config.set('websocket', 'wss://ws.testnet.golos.io');
 
-    golos.api.getAccounts(['melnikaite'], (err, result) => {
-      console.log(err, result);
+const ico = {
+  createPost: (options, callback) => {
+    golos.broadcast.comment(options.postingKey, '', options.maintag, options.author, options.permalink, options.title, options.body, {}, (err, result) => {
+      callback(err, result);
     });
+  },
 
-    //golos.broadcast.comment(  wif,                                                      parentAuthor, parentPermlink, author,       permlink,   title,    body,   jsonMetadata, (err, result) => {
-    golos.broadcast.comment(    '',  '',           'maintag',      'melnikaite', 'permlink', 'title',  'body', {},           (err, result) => {
-      console.log(err, result);
-    });
-
-    golos.broadcast.assetCreate('', 'melnikaite', 'TESTTEST1', 2, {
+  //ico.createAsset({activeKey: '', author: 'melnikaite', assetName: 'TESTTEST0', precision: 2}, console.log);
+  createAsset: (options, callback) => {
+    golos.broadcast.assetCreate(options.activeKey, options.author, options.assetName, options.precision, {
       max_supply: 100000000,
       market_fee_percent: 0,
       max_market_fee: 0,
@@ -43,9 +42,12 @@
       force_settlement_offset_percent: 0,
       maximum_force_settlement_volume: 0,
       extensions: [],
-    }, false, [
-
-    ], (err, result) => {
-      console.log(err, result);
+    }, false, [], (err, result) => {
+      callback(err, result);
     });
-  });
+  },
+
+  getAsset: (assetName, callback) => {
+    golos.api.getAssets([assetName], callback);
+  },
+};

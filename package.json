@@ -1,0 +1,7 @@
+{
+  "name": "golosico",
+  "version": "1.0.0",
+  "dependencies": {
+    "golos-js": "^0.5.29"
+  }
+}
