@@ -2,9 +2,7 @@ golos.config.set('websocket', 'wss://ws.testnet.golos.io');
 
 const ico = {
   createPost: (options, callback) => {
-    golos.broadcast.comment(options.postingKey, '', options.maintag, options.author, options.permalink, options.title, options.body, {}, (err, result) => {
-      callback(err, result);
-    });
+    golos.broadcast.comment(options.postingKey, '', options.maintag, options.author, options.permalink, options.title, options.body, {}, callback);
   },
 
   //ico.createAsset({activeKey: '', author: 'melnikaite', assetName: 'TESTTEST0', precision: 2}, console.log);
@@ -49,5 +47,17 @@ const ico = {
 
   getAsset: (assetName, callback) => {
     golos.api.getAssets([assetName], callback);
+  },
+
+  issueAsset: (options, callback) => {
+    golos.broadcast.assetIssue(options.activeKey, options.issuer, `${options.amount} ${options.assetName}`, options.issuer, '', [], callback);
+  },
+
+  sendToMarket: (options, callback) => {
+
+  },
+
+  buyFromMarket: (options, callback) => {
+
   },
 };
