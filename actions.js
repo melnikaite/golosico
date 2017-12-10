@@ -1,5 +1,6 @@
 var $projects = $('#projects'),
-	$projectsRowTemplate = $('#projects_row_template');
+	$projectsRowTemplate = $('#projects_row_template'),
+	$buyAssetsModal = $('#buy_assets_modal');
 
 ico.getProjects(function(response) {
 	console.log(response);
@@ -18,7 +19,7 @@ ico.getProjects(function(response) {
 		$newRow.find('.projects-row-backers').text('14');
 		$newRow.find('.projects-row-softcap').text('10000 GOLOS');
 		$newRow.find('.buy_assets_call_btn').on('click', function() {
-			$('#buy_assets_modal').modal('show');
+			$buyAssetsModal.modal('show');
 		});
 		$projects.append($newRow);
 	});
@@ -33,4 +34,11 @@ $('#create_campaign_call_btn').on('click', function() {
 $('#projects_call_btn').on('click', function() {
 	$projects.removeClass('d-none');
 	$createCapaign.addClass('d-none');
+});
+
+$buyAssetsModal.find('form').on('submit', function() {
+	var $form = $(this),
+		data = $form.serializeArray();
+	console.log(data);
+	return false;
 });
