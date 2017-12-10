@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 		<link href="./style.css" rel="stylesheet">
 		<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter46957605 = new Ya.Metrika({ id:46957605, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/46957605" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
@@ -23,6 +24,8 @@
 			</nav>
 		</header>
 		<main role="main" class="container">
+			<div id="projects">
+			</div>
 			<div id="create_campaign">
 				<h1>Start building your campaign!</h1>
 				<form method="POST" enctype="multipart/form-data">
@@ -80,59 +83,6 @@
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
-			<div id="projects">
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-4">
-								<img class="img-fluid" src="https://www.kickico.com/assets/_images/44435/45d7bae62096468.png">
-							</div>
-							<div class="col-8">
-								<div class="row">
-									<div class="col">
-										<h2><a href="#">GolosICO</a></h2>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<p>By&nbsp;<a href="https://golos.io/@melnikaite">@melnikaite</a></p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-									</div>
-								</div>
-								<div class="progress" style="height: 20px;">
-									<div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">6865 GOLOS</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<strong>6865 GOLOS</strong>
-									</div>
-									<div class="col text-center">
-										<strong>14</strong>
-									</div>
-									<div class="col text-right">
-										<strong>10000 GOLOS</strong>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										Raised
-									</div>
-									<div class="col text-center">
-										Backers
-									</div>
-									<div class="col text-right">
-										Soft cap
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<br>
 		</main>
 		<footer class="footer">
@@ -141,6 +91,65 @@
 			</div>
 		</footer>
 	</body>
+
+
+<div class="row projects-row d-none" id="projects_row_template">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-4">
+						<img class="projects-row-image img-fluid" src="">
+					</div>
+					<div class="col-8">
+						<div class="row">
+							<div class="col">
+								<h2><a class="projects-row-title" href="#"></a></h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<p>By <a class="projects-row-author" target="_blank" href=""></a></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<p class="projects-row-short-description"></p>
+							</div>
+						</div>
+						<div class="progress" style="height: 20px;">
+							<div class="progress-bar bg-success projects-row-raised-percent" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<strong class="projects-row-raised"></strong>
+							</div>
+							<div class="col text-center">
+								<strong class="projects-row-backers"></strong>
+							</div>
+							<div class="col text-right">
+								<strong class="projects-row-softcap"></strong>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								Raised
+							</div>
+							<div class="col text-center">
+								Backers
+							</div>
+							<div class="col text-right">
+								Soft cap
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 </html>
 
 <script src="./golos.min.js"></script>

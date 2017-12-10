@@ -20,6 +20,7 @@ const ico = {
             image;
           if (metadata.image) image = imgUrlReplace(metadata.image[0]);
           array.push({
+            author: result[i].author,
             permlink: 'ru/projects/' + result[i].permlink,
             created: result[i].created,
             title: result[i].title,
