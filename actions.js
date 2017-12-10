@@ -18,7 +18,8 @@ ico.getProjects(function(response) {
 		$newRow.find('.projects-row-author').text(value.author);
 		$newRow.find('.projects-row-author').attr('href', 'https://golos.io/' + value.author);
 		ico.getBackedAmount('CATSSUPPORT', function(response) {
-			console.debug(response);
+			console.log(response);
+			response.currentBacked = 0;
 			var percent = Math.ceil(response.currentBacked * 100 / response.currentSupply);
 			response.currentBacked = response.currentBacked + ' GOLOS';
 			$newRow.find('.projects-row-raised, .projects-row-raised-percent').text(response.currentBacked);
