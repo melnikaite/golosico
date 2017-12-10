@@ -37,6 +37,22 @@
 			<div class="d-none" id="create_campaign">
 				<h1>Start building your campaign!</h1>
 				<form method="post">
+					<div class="form-group">
+						<label for="campaignname">Campaign name</label>
+						<input type="text" class="form-control" id="campaignname" placeholder="Campaign name" name="compaign_name">
+					</div>
+					<div class="form-group">
+						<label for="asset_name">Asset name</label>
+						<input type="text" class="form-control" id="asset_name" name="asset_name">
+					</div>
+					<div class="form-group">
+						<label for="asset_amount">Asset amount</label>
+						<input type="number" class="form-control" id="asset_amount" name="asset_amount">
+					</div>
+					<div class="form-group">
+						<label for="golos_amount">Golos amount</label>
+						<input type="number" class="form-control" id="golos_amount" name="golos_amount">
+					</div>
 					<!--<div class="form-group">
 						<label class="custom-file">
 							<input type="file" id="file2" class="custom-file-input">
@@ -55,10 +71,6 @@
 							<option>PreICO</option>
 						</select>
 						<div class="select-arrow"></div> 
-					</div>
-					<div class="form-group">
-						<label for="campaignname">Campaign name</label>
-						<input type="text" class="form-control" id="campaignname" placeholder="Campaign name" name="compaign_name">
 					</div>
 					<div class="form-group">
 						<label for="shotdescription">Shot description</label>
@@ -91,18 +103,6 @@
 					<div class="form-group">
 						<label for="linkedin">Linkedin</label>
 						<input type="url" class="form-control" id="linkedin" name="linkedin">
-					</div>
-					<div class="form-group">
-						<label for="asset_name">Asset name</label>
-						<input type="number" class="form-control" id="asset_name" name="asset_name">
-					</div>
-					<div class="form-group">
-						<label for="asset_amount">Asset amount</label>
-						<input type="number" class="form-control" id="asset_amount" name="asset_amount">
-					</div>
-					<div class="form-group">
-						<label for="golos_amount">Golos amount</label>
-						<input type="number" class="form-control" id="golos_amount" name="golos_amount">
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
