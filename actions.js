@@ -43,7 +43,7 @@ $buyAssetsModal.find('form').on('submit', function() {
 	var $form = $(this),
 		data = $form.serializeArray();
 	console.log(data);
-	$loginModal.modal('show');
+	//$loginModal.modal('show');
 	return false;
 });
 
