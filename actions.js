@@ -6,7 +6,7 @@ var $projects = $('#projects'),
 var asset_name;
 
 ico.getProjects(function(response) {
-	console.debug(response);
+	console.log(response);
 	$.each(response, function(index, value) {
 		$newRow = $projectsRowTemplate.clone();
 		$newRow.removeClass('d-none');
@@ -126,7 +126,7 @@ $createCapaign.find('form').on('submit', function () {
   ico.createPost({
     password: data.password,
     author: data.login,
-    maintag: 'golosico',
+    maintag: 'golosico-testnet',
     permalink: data.asset_name.toLowerCase(),
     title: data.compaign_name,
     body: body
