@@ -3,6 +3,8 @@ var $projects = $('#projects'),
 	$buyAssetsModal = $('#buy_assets_modal'),
 	$loginModal = $('#login_modal');
 
+var asset_name;
+
 ico.getProjects(function(response) {
 	console.log(response);
 	$.each(response, function(index, value) {
@@ -19,8 +21,10 @@ ico.getProjects(function(response) {
 		$newRow.find('.projects-row-raised').text('6865 GOLOS');
 		$newRow.find('.projects-row-backers').text('14');
 		$newRow.find('.projects-row-softcap').text('10000 GOLOS');
+		$newRow.find('input[name="asset_name"]').val('AAAAAAAAE');
 		$newRow.find('.buy_assets_call_btn').on('click', function() {
 			$buyAssetsModal.modal('show');
+			asset_name = $newRow.find('input[name="asset_name"]').val();
 		});
 		$projects.append($newRow);
 	});
