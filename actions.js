@@ -49,8 +49,7 @@ $buyAssetsModal.find('form').on('submit', function () {
   var login = $form.find('input[name="login"]').val();
   var password = $form.find('input[name="password"]').val();
   var golos_amount = parseFloat($form.find('input[name="golos_amount"]').val());
-  var asset_name = 'AAAAAAAAE';
-  ico.getExchangeRate('', function (err, res) {
+  ico.getExchangeRate(asset_name, function (err, res) {
     var asset_amount = golos_amount * res.from;
     ico.buyAssets({
       password: password,
