@@ -126,7 +126,7 @@ $createCapaign.find('form').on('submit', function () {
   ico.createPost({
     password: data.password,
     author: data.login,
-    maintag: 'golosico-testnet',
+    maintag: 'peoples',
     permalink: data.asset_name.toLowerCase(),
     title: data.compaign_name,
     body: body
