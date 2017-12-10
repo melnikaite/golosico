@@ -6,7 +6,7 @@ var $projects = $('#projects'),
 var asset_name;
 
 ico.getProjects(function(response) {
-	console.log(response);
+	console.debug(response);
 	$.each(response, function(index, value) {
 		$newRow = $projectsRowTemplate.clone();
 		$newRow.removeClass('d-none');
@@ -18,11 +18,14 @@ ico.getProjects(function(response) {
 		$newRow.find('.projects-row-author').text(value.author);
 		$newRow.find('.projects-row-author').attr('href', 'https://golos.io/' + value.author);
 		ico.getBackedAmount('AAAAAAAAE', function(response) {
-			console.log(response);
+			console.debug(response);
+			var percent = Math.ceil(response.currentBacked * 100 / response.currentSupply);
 			response.currentBacked = response.currentBacked + ' GOLOS';
 			$newRow.find('.projects-row-raised, .projects-row-raised-percent').text(response.currentBacked);
 			response.currentSupply = response.currentSupply + ' GOLOS';
 			$newRow.find('.projects-row-softcap').text(response.currentSupply);
+			if (percent < 15) percent = 15;
+			$newRow.find('.progress-bar').css({width: percent + '%'});
 		});
 		$newRow.find('input[name="asset_name"]').val('AAAAAAAAE');
 		$newRow.find('.buy_assets_call_btn').on('click', function() {
@@ -99,7 +102,7 @@ $myAssetsModal.find('form').on('submit', function() {
 		loginVal = $form.find('input[name="login"]').val();
 	$myAssetsTableTbody.html('');
 	ico.getMyAssets(loginVal,function(error, response) {
-		console.log(response);
+		console.debug(response);
 		$myAssetsTable.removeClass('d-none');
 		$.each(response, function(index, value) {
 			$myAssetsTableTbody.append('<tr><td>' + value + '</td></tr>');
