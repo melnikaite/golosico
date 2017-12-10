@@ -85,3 +85,24 @@ $loginModal.find('form').on('submit', function() {
 	$loginModal.modal('hide');
 	return false;
 });
+
+var $myAssetsModal = $('#my_assets_modal'),
+	$myAssetsTable = $myAssetsModal.find('#my_assets_table'),
+	$myAssetsTableTbody = $myAssetsTable.find('tbody');
+$('#my_assets_call_btn').on('click', function() {
+	$myAssetsModal.modal('show');
+});
+
+$myAssetsModal.find('form').on('submit', function() {
+	var $form = $(this),
+		loginVal = $form.find('input[name="login"]').val();
+	$myAssetsTableTbody.html('');
+	ico.getMyAssets(loginVal,function(error, response) {
+		console.log(response);
+		$myAssetsTable.removeClass('d-none');
+		$.each(response, function(index, value) {
+			$myAssetsTableTbody.append('<tr><td>' + value + '</td></tr>');
+		});
+	});
+	return false;
+});
