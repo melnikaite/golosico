@@ -105,3 +105,14 @@ $myAssetsModal.find('form').on('submit', function() {
 	});
 	return false;
 });
+
+$createCapaign.find('form').on('submit', function() {
+	var $form = $(this),
+		data = $form.serializeArray(),
+		zaebisData = {};
+	$.each(data, function(index, value) {
+		zaebisData[value.name] = value.value;
+	});
+	console.log(zaebisData);
+	return false;
+});

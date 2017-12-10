@@ -36,16 +36,20 @@
 			</div>
 			<div class="d-none" id="create_campaign">
 				<h1>Start building your campaign!</h1>
-				<form method="POST" enctype="multipart/form-data">
-					<div class="form-group">
+				<form method="post">
+					<!--<div class="form-group">
 						<label class="custom-file">
 							<input type="file" id="file2" class="custom-file-input">
 							<span class="custom-file-control"></span>
 						</label>
+					</div>-->
+					<div class="form-group">
+						<label for="image">Image</label>
+						<input type="url" class="form-control" id="image" name="compaign_image" placeholder="Campaign image">
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlSelect1">Type of campaign</label>
-						<select class="form-control" id="exampleFormControlSelect1">
+						<label for="compaign_type">Type of campaign</label>
+						<select class="form-control" id="compaign_type" name="compaign_type">
 							<option>Choose the type of campaign</option>
 							<option>ICO</option>
 							<option>PreICO</option>
@@ -54,39 +58,51 @@
 					</div>
 					<div class="form-group">
 						<label for="campaignname">Campaign name</label>
-						<input type="text" class="form-control" id="campaignname" placeholder="Campaign name">
+						<input type="text" class="form-control" id="campaignname" placeholder="Campaign name" name="compaign_name">
 					</div>
 					<div class="form-group">
 						<label for="shotdescription">Shot description</label>
-						<input type="text" class="form-control" id="shotdescription" placeholder="Shot description">
+						<input type="text" class="form-control" id="shotdescription" placeholder="Shot description" name="short_description">
 					</div>
 					<div class="form-group">
 						<label for="softcap">Soft cap</label>
-						<input type="number" class="form-control" id="softcap">
+						<input type="number" class="form-control" id="softcap" name="softcap">
 					</div>
 					<div class="form-group">
 						<label for="video"> Link to the campaign video</label>
-						<input type="url" class="form-control" id="video">
+						<input type="url" class="form-control" id="video" name="video">
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlTextarea1">Compaign description</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						<label for="description">Compaign description</label>
+						<textarea class="form-control" id="description" rows="3" name="description"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="location">Location</label>
-						<input type="text" class="form-control" id="location">
+						<input type="text" class="form-control" id="location" name="location">
 					</div>
 					<div class="form-group">
 						<label for="facebook">Facebook</label>
-						<input type="url" class="form-control" id="facebook">
+						<input type="url" class="form-control" id="facebook" name="facebook">
 					</div>
 					<div class="form-group">
 						<label for="google">Google+</label>
-						<input type="url" class="form-control" id="google">
+						<input type="url" class="form-control" id="google" name="google">
 					</div>
 					<div class="form-group">
 						<label for="linkedin">Linkedin</label>
-						<input type="url" class="form-control" id="linkedin">
+						<input type="url" class="form-control" id="linkedin" name="linkedin">
+					</div>
+					<div class="form-group">
+						<label for="asset_name">Asset name</label>
+						<input type="number" class="form-control" id="asset_name" name="asset_name">
+					</div>
+					<div class="form-group">
+						<label for="asset_amount">Asset amount</label>
+						<input type="number" class="form-control" id="asset_amount" name="asset_amount">
+					</div>
+					<div class="form-group">
+						<label for="golos_amount">Golos amount</label>
+						<input type="number" class="form-control" id="golos_amount" name="golos_amount">
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
