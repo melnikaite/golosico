@@ -108,11 +108,11 @@ $myAssetsModal.find('form').on('submit', function() {
 
 $createCapaign.find('form').on('submit', function() {
 	var $form = $(this),
-		data = $form.serializeArray(),
-		zaebisData = {};
-	$.each(data, function(index, value) {
-		zaebisData[value.name] = value.value;
+		rawData = $form.serializeArray(),
+		data = {};
+	$.each(rawData, function(index, value) {
+		data[value.name] = value.value;
 	});
-	console.log(zaebisData);
+	console.log(data);
 	return false;
 });
