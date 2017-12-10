@@ -49,6 +49,7 @@ $buyAssetsModal.find('form').on('submit', function () {
   var login = $form.find('input[name="login"]').val();
   var password = $form.find('input[name="password"]').val();
   var golos_amount = parseFloat($form.find('input[name="golos_amount"]').val());
+  var asset_name = 'AAAAAAAAE';
   ico.getExchangeRate('', function (err, res) {
     var asset_amount = golos_amount * res.from;
     ico.buyAssets({
@@ -56,12 +57,12 @@ $buyAssetsModal.find('form').on('submit', function () {
       buyer: login,
       amountGolos: golos_amount,
       amountAsset: asset_amount,
-      assetName: 'AAAAAAAAE',
+      assetName: asset_name,
       expiration: new Date(new Date().getTime() + 60 * 1000)
     }, function (err, res) {
       swal({
-        title: 'Успешно!',
-        text: `Куплено ${asset_amount} ассетов на ${golos_amount} голосов!`,
+        title: 'Success!',
+        text: `You just bought ${asset_amount} ${asset_name} for ${golos_amount} GOLOS!`,
         type: 'success',
         confirmButtonText: 'OK',
         confirmButtonClass: 'btn btn-success btn-lg',
