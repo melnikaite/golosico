@@ -106,13 +106,50 @@ $myAssetsModal.find('form').on('submit', function() {
 	return false;
 });
 
-$createCapaign.find('form').on('submit', function() {
-	var $form = $(this),
-		rawData = $form.serializeArray(),
-		data = {};
-	$.each(rawData, function(index, value) {
-		data[value.name] = value.value;
-	});
-	console.log(data);
-	return false;
+$createCapaign.find('form').on('submit', function () {
+  var $form = $(this),
+    rawData = $form.serializeArray(),
+    data = {};
+  $.each(rawData, function (index, value) {
+    data[value.name] = value.value;
+  });
+
+  var body = data.description;
+
+  debugger
+  ico.createPost({
+    password: '',
+    author: 'melnikaite',
+    maintag: 'golosico',
+    permalink: data.asset_name,
+    title: data.compaign_name,
+    body: body
+  }, function (err, res) {
+    ico.createAsset({
+      password: '',
+      author: 'melnikaite',
+      assetName: data.asset_name,
+      supply: data.softcap,
+      golosAmount: data.golos_amount,
+      assetAmount: data.asset_amount
+    }, function (err, res) {
+      ico.issueAsset({
+        password: '',
+        issuer: 'melnikaite',
+        amount: data.asset_amount,
+        assetName: data.asset_name
+      }, function (err, res) {
+        ico.sellAssets({
+          password: '',
+          issuer: 'melnikaite',
+          amountGolos: data.golos_amount,
+          amountAsset: data.asset_amount,
+          assetName: data.asset_name,
+          expiration: new Date(new Date().getTime() + 60 * 1000)
+        }, console.log);
+      });
+    });
+  });
+
+  return false;
 });
