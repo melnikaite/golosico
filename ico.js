@@ -3,7 +3,6 @@ golos.config.set('address_prefix', 'GLS');
 golos.config.set('chain_id', '5876894a41e6361bde2e73278f07340f2eb8b41c2facd29099de9deef6cdb679');
 
 const ico = {
-
   getProjects: (callback) => {
     golos.api.getDiscussionsByTrending({select_tags: ['golosico'], limit: 100}, function (err, result) {
       if (err) console.error(err);
@@ -90,9 +89,24 @@ const ico = {
     });
   },
 
-  getAccount: (issuer, callback) => {
-    golos.api.getAccounts([issuer], (err, res) => {
-      callback(err, res[0]);
+  getIssuerAssetBalance: (issuer, assetName, callback) => {
+    golos.api.getAccountBalances(issuer, [assetName], (err, res) => {
+      callback(err, parseFloat(res[0].split(' ')[0]));
+    });
+  },
+
+  getBackedAmount: (assetName, callback) => {
+    ico.getAssetDynamicData(assetName, (err, res) => {
+      const currentSupply = res.current_supply / Math.pow(10, 3);
+      ico.getAsset(assetName, (err, res) => {
+        ico.getIssuerAssetBalance(res.issuer, assetName, (err, currentAmount) => {
+          callback({
+            currentSupply: currentSupply,
+            currentAmount: currentAmount,
+            currentBacked: currentSupply - currentAmount,
+          });
+        });
+      });
     });
   },
 
