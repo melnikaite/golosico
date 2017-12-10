@@ -173,7 +173,7 @@
 				<form>
 					<div class="form-group">
 						<label for="golos_amount">GOLOS amount:</label>
-						<input type="number" class="form-control" id="golos_amount" name="golos_amount" aria-describedby="emailHelp" placeholder="Enter GOLOS ammount">
+						<input type="number" class="form-control" id="golos_amount" name="golos_amount" aria-describedby="emailHelp" placeholder="Enter GOLOS ammount" required="">
 					</div>
 					<button type="submit" class="btn btn-primary">Buy</button>
 				</form>
@@ -198,10 +198,14 @@
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						<label for="golos_amount">GOLOS amount:</label>
-						<input type="number" class="form-control" id="golos_amount" name="golos_amount" aria-describedby="emailHelp" placeholder="Enter GOLOS ammount">
+						<label for="login">Username:</label>
+						<input type="text" class="form-control" id="login" name="login" aria-describedby="emailHelp" placeholder="Enter your login @golos" required="">
 					</div>
-					<button type="submit" class="btn btn-primary">Buy</button>
+					<div class="form-group">
+						<label for="password">Password:</label>
+						<input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Enter your password" required="">
+					</div>
+					<button type="submit" class="btn btn-primary">Login</button>
 				</form>
 			</div>
 			<div class="modal-footer">

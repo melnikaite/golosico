@@ -1,6 +1,7 @@
 var $projects = $('#projects'),
 	$projectsRowTemplate = $('#projects_row_template'),
-	$buyAssetsModal = $('#buy_assets_modal');
+	$buyAssetsModal = $('#buy_assets_modal'),
+	$loginModal = $('#login_modal');
 
 ico.getProjects(function(response) {
 	console.log(response);
@@ -36,9 +37,23 @@ $('#projects_call_btn').on('click', function() {
 	$createCapaign.addClass('d-none');
 });
 
+var auth = {};
+
 $buyAssetsModal.find('form').on('submit', function() {
 	var $form = $(this),
 		data = $form.serializeArray();
 	console.log(data);
+	$loginModal.modal('show');
+	return false;
+});
+
+$loginModal.find('form').on('submit', function() {
+	var $form = $(this),
+		data = $form.serializeArray();
+	auth = {
+		login: $form.find('input[name="login"]').val(),
+		pass: $form.find('input[name="password"]').val()
+	};
+	$loginModal.modal('hide');
 	return false;
 });
