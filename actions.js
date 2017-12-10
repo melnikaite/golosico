@@ -17,6 +17,9 @@ ico.getProjects(function(response) {
 		$newRow.find('.projects-row-raised').text('6865 GOLOS');
 		$newRow.find('.projects-row-backers').text('14');
 		$newRow.find('.projects-row-softcap').text('10000 GOLOS');
+		$newRow.find('.buy_assets_call_btn').on('click', function() {
+			$('#buy_assets_modal').modal('show');
+		});
 		$projects.append($newRow);
 	});
 });
