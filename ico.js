@@ -63,8 +63,8 @@ const ico = {
           issuer_permissions: 79,
           flags: 0,
           core_exchange_rate: {
-            base: `${options.golosAmount}.000 GOLOS`,
-            quote: `${options.assetAmount}.000 ${options.assetName}`
+            base: `${options.golosAmount.toFixed(3)} GOLOS`,
+            quote: `${options.assetAmount.toFixed(3)} ${options.assetName}`
           },
           whitelist_authorities: [],
           blacklist_authorities: [],
@@ -131,12 +131,12 @@ const ico = {
   //ico.sellAssets({password: '', issuer: 'melnikaite', amountGolos: 2, amountAsset: 100, assetName: 'AAAAAAAA', expiration: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}, console.log);
   sellAssets: (options, callback) => {
     const wif = golos.auth.toWif(options.issuer, options.password, 'active');
-    golos.broadcast.limitOrderCreate(wif, options.issuer, Math.round(Date.now() / 1000), `${options.amountAsset}.000 ${options.assetName}`, `${options.amountGolos}.000 GOLOS`, false, options.expiration, callback);
+    golos.broadcast.limitOrderCreate(wif, options.issuer, Math.round(Date.now() / 1000), `${options.amountAsset.toFixed(3)} ${options.assetName}`, `${options.amountGolos.toFixed(3)} GOLOS`, false, options.expiration, callback);
   },
 
   //ico.buyAssets({password: '', buyer: 'melnikaite', amountGolos: 2, amountAsset: 100, assetName: 'AAAAAAAA', expiration: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}, console.log);
   buyAssets: (options, callback) => {
     const wif = golos.auth.toWif(options.buyer, options.password, 'active');
-    golos.broadcast.limitOrderCreate(wif, options.buyer, Math.round(Date.now() / 1000), `${options.amountGolos}.000 GOLOS`, `${options.amountAsset}.000 ${options.assetName}`, false, options.expiration, callback);
+    golos.broadcast.limitOrderCreate(wif, options.buyer, Math.round(Date.now() / 1000), `${options.amountGolos.toFixed(3)} GOLOS`, `${options.amountAsset.toFixed(3)} ${options.assetName}`, false, options.expiration, callback);
   },
 };
