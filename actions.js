@@ -20,3 +20,14 @@ ico.getProjects(function(response) {
 		$projects.append($newRow);
 	});
 });
+
+var $createCapaign = $('#create_campaign');
+$('#create_campaign_call_btn').on('click', function() {
+	$createCapaign.removeClass('d-none');
+	$projects.addClass('d-none');
+});
+
+$('#projects_call_btn').on('click', function() {
+	$projects.removeClass('d-none');
+	$createCapaign.addClass('d-none');
+});
