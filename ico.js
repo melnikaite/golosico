@@ -111,6 +111,17 @@ const ico = {
     });
   },
 
+  getExchangeRate: (assetName, callback) => {
+    ico.getAsset(assetName, (err, res) => {
+      const base = parseFloat(res.options.core_exchange_rate.base);
+      const quote = parseFloat(res.options.core_exchange_rate.quote);
+      callback({
+        to: quote / base,
+        from: base / quote,
+      });
+    });
+  },
+
   //ico.issueAsset({password: '', issuer: 'melnikaite', amount: 100, assetName: 'AAAAAAAA'}, console.log);
   issueAsset: (options, callback) => {
     const wif = golos.auth.toWif(options.issuer, options.password, 'active');
