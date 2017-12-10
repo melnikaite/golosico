@@ -4,7 +4,7 @@ golos.config.set('chain_id', '5876894a41e6361bde2e73278f07340f2eb8b41c2facd29099
 
 const ico = {
   getProjects: (callback) => {
-    golos.api.getDiscussionsByTrending({select_tags: ['peoples'], limit: 100}, function (err, result) {
+    golos.api.getDiscussionsByTrending({select_tags: ['test'], limit: 100}, function (err, result) {
       if (err) console.error(err);
       else {
         let array = [];
