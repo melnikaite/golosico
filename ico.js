@@ -119,7 +119,7 @@ const ico = {
     ico.getAsset(assetName, (err, res) => {
       const base = parseFloat(res.options.core_exchange_rate.base);
       const quote = parseFloat(res.options.core_exchange_rate.quote);
-      callback({
+      callback(err, {
         to: quote / base,
         from: base / quote,
       });
