@@ -96,6 +96,10 @@ const ico = {
     });
   },
 
+  getMyAssets: (issuer, callback) => {
+    golos.api.getAccountBalances(issuer, [], callback);
+  },
+
   getBackedAmount: (assetName, callback) => {
     ico.getAssetDynamicData(assetName, (err, res) => {
       const currentSupply = res.current_supply / Math.pow(10, 3);
