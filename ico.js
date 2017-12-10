@@ -84,6 +84,18 @@ const ico = {
     });
   },
 
+  getAssetDynamicData: (assetName, callback) => {
+    golos.api.getAssetsDynamicData([assetName], (err, res) => {
+      callback(err, res[0]);
+    });
+  },
+
+  getAccount: (issuer, callback) => {
+    golos.api.getAccounts([issuer], (err, res) => {
+      callback(err, res[0]);
+    });
+  },
+
   //ico.issueAsset({password: '', issuer: 'melnikaite', amount: 100, assetName: 'AAAAAAAA'}, console.log);
   issueAsset: (options, callback) => {
     const wif = golos.auth.toWif(options.issuer, options.password, 'active');
@@ -100,10 +112,5 @@ const ico = {
   buyAssets: (options, callback) => {
     const wif = golos.auth.toWif(options.buyer, options.password, 'active');
     golos.broadcast.limitOrderCreate(wif, options.buyer, Math.round(Date.now() / 1000), `${options.amountGolos}.000 GOLOS`, `${options.amountAsset}.000 ${options.assetName}`, false, options.expiration, callback);
-  },
-
-  //ico.getOrders('melnikaite', console.log);
-  getOrders: (issuer, callback) => {
-    golos.api.getLimitOrdersByOwner(issuer, callback);
   },
 };
