@@ -19,3 +19,7 @@ body {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.navbar li {
+	margin: 0 20px;
+}
