@@ -69,7 +69,6 @@ $buyAssetsModal.find('form').on('submit', function () {
         confirmButtonText: 'OK',
         confirmButtonClass: 'btn btn-success btn-lg',
         buttonsStyling: false,
-        //timer: 1500
       });
     });
   });
@@ -118,38 +117,48 @@ $createCapaign.find('form').on('submit', function () {
   });
 
   var body = data.description;
+  var totalAmountAsset = parseInt(data.softcap);
+  var totalAmountGolos = parseFloat(data.golos_amount) / parseFloat(data.asset_amount) * parseInt(data.softcap);
 
-  debugger
   ico.createPost({
-    password: '',
-    author: 'melnikaite',
+    password: data.password,
+    author: data.login,
     maintag: 'golosico',
-    permalink: data.asset_name,
+    permalink: data.asset_name.toLowerCase(),
     title: data.compaign_name,
     body: body
   }, function (err, res) {
     ico.createAsset({
-      password: '',
-      author: 'melnikaite',
+      password: data.password,
+      author: data.login,
       assetName: data.asset_name,
-      supply: data.softcap,
-      golosAmount: data.golos_amount,
-      assetAmount: data.asset_amount
+      supply: parseInt(data.softcap),
+      golosAmount: parseFloat(data.golos_amount),
+      assetAmount: parseFloat(data.asset_amount)
     }, function (err, res) {
       ico.issueAsset({
-        password: '',
-        issuer: 'melnikaite',
-        amount: data.asset_amount,
+        password: data.password,
+        issuer: data.login,
+        amount: parseInt(data.softcap),
         assetName: data.asset_name
       }, function (err, res) {
         ico.sellAssets({
-          password: '',
-          issuer: 'melnikaite',
-          amountGolos: data.golos_amount,
-          amountAsset: data.asset_amount,
+          password: data.password,
+          issuer: data.login,
+          amountGolos: totalAmountGolos,
+          amountAsset: totalAmountAsset,
           assetName: data.asset_name,
-          expiration: new Date(new Date().getTime() + 60 * 1000)
-        }, console.log);
+          expiration: new Date(data.end_data)
+        }, function (err, res) {
+          swal({
+            title: 'Success!',
+            html: `You just created campaign for <b>${totalAmountAsset} ${data.asset_name}</b> equal to <b>${totalAmountGolos}</b> GOLOS!`,
+            type: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonClass: 'btn btn-success btn-lg',
+            buttonsStyling: false,
+          });
+        });
       });
     });
   });
