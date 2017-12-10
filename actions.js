@@ -17,7 +17,7 @@ ico.getProjects(function(response) {
 		value.author = '@' + value.author;
 		$newRow.find('.projects-row-author').text(value.author);
 		$newRow.find('.projects-row-author').attr('href', 'https://golos.io/' + value.author);
-		ico.getBackedAmount('AAAAAAAAE', function(response) {
+		ico.getBackedAmount('CATSSUPPORT', function(response) {
 			console.debug(response);
 			var percent = Math.ceil(response.currentBacked * 100 / response.currentSupply);
 			response.currentBacked = response.currentBacked + ' GOLOS';
@@ -27,7 +27,7 @@ ico.getProjects(function(response) {
 			if (percent < 15) percent = 15;
 			$newRow.find('.progress-bar').css({width: percent + '%'});
 		});
-		$newRow.find('input[name="asset_name"]').val('AAAAAAAAE');
+		$newRow.find('input[name="asset_name"]').val('CATSSUPPORT');
 		$newRow.find('.buy_assets_call_btn').on('click', function() {
 			$buyAssetsModal.modal('show');
 			asset_name = $newRow.find('input[name="asset_name"]').val();

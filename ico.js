@@ -7,6 +7,7 @@ const ico = {
     golos.api.getDiscussionsByTrending({select_tags: ['test'], limit: 100}, function (err, result) {
       if (err) console.error(err);
       else {
+		console.log(result);
         let array = [];
         for (let i = 0; i < result.length; i++) {
           result[i].permlink = result[i].permlink.replace(/proekt-/g, '');
