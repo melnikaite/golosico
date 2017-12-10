@@ -17,10 +17,13 @@ ico.getProjects(function(response) {
 		value.author = '@' + value.author;
 		$newRow.find('.projects-row-author').text(value.author);
 		$newRow.find('.projects-row-author').attr('href', 'https://golos.io/' + value.author);
-		$newRow.find('.projects-row-raised-percent').text('6865 GOLOS');
-		$newRow.find('.projects-row-raised').text('6865 GOLOS');
-		$newRow.find('.projects-row-backers').text('14');
-		$newRow.find('.projects-row-softcap').text('10000 GOLOS');
+		ico.getBackedAmount('AAAAAAAAE', function(response) {
+			console.log(response);
+			response.currentBacked = response.currentBacked + ' GOLOS';
+			$newRow.find('.projects-row-raised, .projects-row-raised-percent').text(response.currentBacked);
+			response.currentSupply = response.currentSupply + ' GOLOS';
+			$newRow.find('.projects-row-softcap').text(response.currentSupply);
+		});
 		$newRow.find('input[name="asset_name"]').val('AAAAAAAAE');
 		$newRow.find('.buy_assets_call_btn').on('click', function() {
 			$buyAssetsModal.modal('show');
