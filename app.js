@@ -170,10 +170,8 @@ $createCapaign.find('form').on('submit', function () {
   return false;
 });
 
-
 swal({
 	title: 'This is the alpha version and<br>it works in the testnet!',
-	//html: `You just created camp<Br>aign  GOLOS!`,
 	type: 'warning',
 	showCloseButton: true,
 	showCancelButton: true,
@@ -194,4 +192,16 @@ swal({
 			confirmButtonText: 'OK'
 		});
 	}
+});
+
+$('#about_golosico_call_btn').on('click', function() {
+	swal({
+		title: 'About this project!',
+		html: $('#about_golosico_html').html(),
+		type: 'info',
+		buttonsStyling: false,
+		confirmButtonClass: 'btn btn-success btn-lg',
+		confirmButtonText: 'Cool!',
+		position: 'top'
+	});
 });
