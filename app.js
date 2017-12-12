@@ -169,3 +169,29 @@ $createCapaign.find('form').on('submit', function () {
 
   return false;
 });
+
+
+swal({
+	title: 'This is the alpha version and<br>it works in the testnet!',
+	//html: `You just created camp<Br>aign  GOLOS!`,
+	type: 'warning',
+	showCloseButton: true,
+	showCancelButton: true,
+	buttonsStyling: false,
+	confirmButtonClass: 'btn btn-success btn-lg',
+	cancelButtonClass: 'btn btn-danger btn-lg',
+	confirmButtonText: 'Understand!',
+	cancelButtonText: 'Not understand...'
+}).then((result) => {
+	if (result.dismiss === 'cancel') {
+		swal({
+			title: 'Alpha version and testnet!',
+			html: 'This is in active development of the platform and all actions are not published in the publish blockchain, only in the test blockchain.<br>Assets, GOLOS, not real...',
+			type: 'info',
+			showCloseButton: true,
+			buttonsStyling: false,
+			confirmButtonClass: 'btn btn-success btn-lg',
+			confirmButtonText: 'OK'
+		});
+	}
+});

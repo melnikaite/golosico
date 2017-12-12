@@ -23,3 +23,11 @@ body {
 .navbar li {
 	margin: 0 20px;
 }
+
+.btn {
+	cursor: pointer;
+}
+
+.swal2-container .swal2-buttonswrapper .btn {
+	margin: 15px 5px 0;
+}
