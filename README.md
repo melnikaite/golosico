@@ -5,7 +5,6 @@
 **This is the alpha version and it works in the testnet!
 This is in active development of the platform and all actions are not published in the public blockchain, only in the test blockchain. Assets, GOLOS, not real...**
 
-## About this project:
 ## golosICO - platform for holding ICO companies on the blockchain Golos! This platform is a thin client, that works without a backend (only frontend and blockchain) directly on the GitHub Pages (through CloudFlare).
 
 We use:
