@@ -179,12 +179,12 @@ swal({
 	confirmButtonClass: 'btn btn-success btn-lg',
 	cancelButtonClass: 'btn btn-danger btn-lg',
 	confirmButtonText: 'Understand!',
-	cancelButtonText: 'Not understand...'
+	cancelButtonText: 'Don\'t understand...'
 }).then((result) => {
 	if (result.dismiss === 'cancel') {
 		swal({
 			title: 'Alpha version and testnet!',
-			html: 'This is in active development of the platform and all actions are not published in the publish blockchain, only in the test blockchain.<br>Assets, GOLOS, not real...',
+			html: 'This is in active development of the platform and all actions are not published in the public blockchain, only in the test blockchain.<br>Assets, GOLOS, not real...',
 			type: 'info',
 			showCloseButton: true,
 			buttonsStyling: false,
