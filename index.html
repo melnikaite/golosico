@@ -48,13 +48,16 @@
 			<div class="d-none" id="create_campaign">
 				<h1>Start building your campaign!</h1>
 				<form method="post">
-					<div class="form-group">
-						<label for="campaignname">Campaign name</label>
-						<input type="text" class="form-control" id="campaignname" placeholder="Campaign name" name="compaign_name" required="">
-					</div>
-					<div class="form-group">
-						<label for="asset_name">Asset name</label>
-						<input type="text" class="form-control" id="asset_name" name="asset_name" required="">
+					<div class="form-row" style="margin-bottom: 1rem;">
+						<div class="col-8">
+							<label for="campaign-name">Campaign name</label>
+							<input type="text" class="form-control" id="campaign-name" placeholder="Campaign name" name="campaign-name" required="">
+						</div>
+						<div class="col-4">
+							<label for="asset_name">Asset name</label>
+							<input type="text" class="form-control" id="asset_name" name="asset_name" required="" minlength="3" maxlength="16">
+							<small id="asset_name_price" class="form-text text-muted"></small>
+						</div>
 					</div>
 					<div class="form-row" style="margin-bottom: 1rem;">
 						<div class="col-4">
@@ -71,21 +74,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="shotdescription">Shot description</label>
-						<input type="text" class="form-control" id="shotdescription" placeholder="Shot description" name="short_description" required="">
-					</div>
-					<div class="card" style="margin-bottom: 1rem;">
-						<div class="card-body">
-							<h4 class="card-title">Golos authorization</h4>
-							<div class="form-group">
-								<label for="login">Username:</label>
-								<input type="text" class="form-control" id="login" name="login" aria-describedby="emailHelp" placeholder="Enter your login @golos" required="">
-							</div>
-							<div class="form-group">
-								<label for="password">Password:</label>
-								<input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Enter your password" required="">
-							</div>
-						</div>
+						<label for="shotd-escription">Short description</label>
+						<input type="text" class="form-control" id="short-description" placeholder="Shot description" name="short-description" required="">
 					</div>
 					<div class="form-group">
 						<label for="end_data">End date</label>
@@ -98,7 +88,7 @@
 						</label>
 					</div>-->
 					<div class="form-group">
-						<label for="image">Image</label>
+						<label for="compaign_image">Image</label>
 						<input type="url" class="form-control" id="image" name="compaign_image" placeholder="Campaign image">
 					</div>
 					<div class="form-group">
@@ -124,7 +114,7 @@
 							<div class="form-row" style="margin-bottom: 1rem;">
 								<div class="col-4">
 									<label class="sr-only">Social:</label>
-									<select class="form-control" name="social-type[]">
+									<select class="form-control" name="social_type[]">
 										<option selected>Choose social...</option>
 										<option value="vk">VK</option>
 										<option value="facebook">Facebook</option>
@@ -145,6 +135,19 @@
 					<div class="form-group">
 						<label for="description">Compaign description</label>
 						<textarea class="form-control" id="description" rows="3" name="description" required=""></textarea>
+					</div>
+					<div class="card" style="margin-bottom: 1rem;">
+						<div class="card-body">
+							<h4 class="card-title">Golos authorization</h4>
+							<div class="form-group">
+								<label for="login">Username:</label>
+								<input type="text" class="form-control" id="login" name="login" aria-describedby="emailHelp" placeholder="Enter your login @golos" required="">
+							</div>
+							<div class="form-group">
+								<label for="password">Password:</label>
+								<input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Enter your password" required="">
+							</div>
+						</div>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>

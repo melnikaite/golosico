@@ -144,4 +144,9 @@ const ico = {
     const wif = golos.auth.toWif(options.buyer, options.password, 'active');
     golos.broadcast.limitOrderCreate(wif, options.buyer, Math.round(Date.now() / 1000), `${options.amountGolos.toFixed(3)} GOLOS`, `${options.amountAsset.toFixed(3)} ${options.assetName}`, false, options.expiration, callback);
   },
+	
+  getPriceAssetName: (name, callback) => {
+    golos.api.getNameCost(name, callback);		
+  },
+	
 };

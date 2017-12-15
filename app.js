@@ -254,3 +254,14 @@ $('#social-add-btn').on('click', function() {
 $('#socials-add').on('click', '.remove', function() {
 	$(this).parents('.form-row').remove();
 });
+
+$('#campaign-name').on('input', function() {
+	var value = $(this).val();
+	$('#asset_name').val(value.toUpperCase().replace(/[^A-Z]/g, ''));
+});
+
+$('#asset_name').on('input', function() {
+	ico.getPriceAssetName($(this).val(), function(err, res) {
+		$('#asset_name_price').text(res);
+	});
+});
