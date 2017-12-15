@@ -122,49 +122,87 @@ $createCapaign.find('form').on('submit', function () {
 
   var body = data.description;
   var totalAmountAsset = parseInt(data.softcap);
-  var totalAmountGolos = parseFloat(data.golos_amount) / parseFloat(data.asset_amount) * parseInt(data.softcap);
-
+  var assetAmount = parseFloat(data.asset_amount);
+  var golosAmount = parseFloat(data.golos_amount);
+  var totalAmountGolos = golosAmount / assetAmount * totalAmountAsset;
+  var expirationAsset = new Date(data.end_data);
+	
   ico.createPost({
     password: data.password,
     author: data.login,
-    maintag: 'test',
+    maintag: 'golosico',
     permalink: data.asset_name.toLowerCase(),
     title: data.compaign_name,
-    body: body
+    body: body,
+	meta_data: {
+		compaignType: data.compaign_type,
+		assetName: data.asset_name,
+		amountAsset: totalAmountAsset,
+		assetAmount: assetAmount,
+		golosAmount: golosAmount,
+		amountGolos: totalAmountGolos,
+		expiration: expirationAsset
+	}
   }, function (err, res) {
-    ico.createAsset({
-      password: data.password,
-      author: data.login,
-      assetName: data.asset_name,
-      supply: parseInt(data.softcap),
-      golosAmount: parseFloat(data.golos_amount),
-      assetAmount: parseFloat(data.asset_amount)
-    }, function (err, res) {
-      ico.issueAsset({
-        password: data.password,
-        issuer: data.login,
-        amount: parseInt(data.softcap),
-        assetName: data.asset_name
-      }, function (err, res) {
-        ico.sellAssets({
-          password: data.password,
-          issuer: data.login,
-          amountGolos: totalAmountGolos,
-          amountAsset: totalAmountAsset,
-          assetName: data.asset_name,
-          expiration: new Date(data.end_data)
-        }, function (err, res) {
-          swal({
-            title: 'Success!',
-            html: `You just created campaign for <b>${totalAmountAsset} ${data.asset_name}</b> equal to <b>${totalAmountGolos}</b> GOLOS!`,
-            type: 'success',
-            confirmButtonText: 'OK',
-            confirmButtonClass: 'btn btn-success btn-lg',
-            buttonsStyling: false,
-          });
-        });
-      });
-    });
+	if ( ! err) {
+		ico.createAsset({
+		  password: data.password,
+		  author: data.login,
+		  assetName: data.asset_name,
+		  supply: totalAmountAsset,
+		  golosAmount: golosAmount,
+		  assetAmount: assetAmount
+		}, function (err, res) {
+			if ( ! err) {
+			  ico.issueAsset({
+				password: data.password,
+				issuer: data.login,
+				amount: totalAmountAsset,
+				assetName: data.asset_name
+			  }, function (err, res) {
+				ico.sellAssets({
+				  password: data.password,
+				  issuer: data.login,
+				  amountGolos: totalAmountGolos,
+				  amountAsset: totalAmountAsset,
+				  assetName: data.asset_name,
+				  expiration: expirationAsset
+				}, function (err, res) {
+				  swal({
+					title: 'Success!',
+					html: `You just created campaign for <b>${totalAmountAsset} ${data.asset_name}</b> equal to <b>${totalAmountGolos}</b> GOLOS!`,
+					type: 'success',
+					confirmButtonText: 'OK',
+					confirmButtonClass: 'btn btn-success btn-lg',
+					buttonsStyling: false,
+				  });
+				});
+			  });
+			}
+			else {
+				swal({
+					title: 'Error!',
+					html: err.message,
+					type: 'error',
+					showCloseButton: true,
+					buttonsStyling: false,
+					confirmButtonClass: 'btn btn-danger btn-lg',
+					confirmButtonText: 'OK'
+				});
+			}
+		});
+  	}
+	else {
+		swal({
+			title: 'Error!',
+			html: err.message,
+			type: 'error',
+			showCloseButton: true,
+			buttonsStyling: false,
+			confirmButtonClass: 'btn btn-danger btn-lg',
+			confirmButtonText: 'OK'
+		});
+	}
   });
 
   return false;

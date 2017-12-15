@@ -4,7 +4,7 @@ golos.config.set('chain_id', '5876894a41e6361bde2e73278f07340f2eb8b41c2facd29099
 
 const ico = {
   getProjects: (callback) => {
-    golos.api.getDiscussionsByTrending({select_tags: ['test'], limit: 100}, function (err, result) {
+    golos.api.getDiscussionsByTrending({select_tags: ['ico'], limit: 100}, function (err, result) {
       if (err) console.error(err);
       else {
 		console.log(result);
@@ -46,7 +46,7 @@ const ico = {
   //ico.createPost({password: '', author: 'melnikaite', maintag: 'maintag', permalink: 'permalink', title: 'title', body: 'body'}, console.log);
   createPost: (options, callback) => {
     const wif = golos.auth.toWif(options.author, options.password, 'posting');
-    golos.broadcast.comment(wif, '', options.maintag, options.author, options.permalink, options.title, options.body, {}, callback);
+    golos.broadcast.comment(wif, '', options.maintag, options.author, options.permalink, options.title, options.body, options.meta_data, callback);
   },
 
   //ico.createAsset({password: '', author: 'melnikaite', assetName: 'TESTTEST', supply: 1000000, golosAmount: 2, assetAmount: 100}, console.log);
