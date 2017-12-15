@@ -31,3 +31,7 @@ body {
 .swal2-container .swal2-buttonswrapper .btn {
 	margin: 15px 5px 0;
 }
+
+.ck-editor__editable {
+	min-height: 400px;
+}

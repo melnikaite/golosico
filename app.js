@@ -272,3 +272,9 @@ $('#asset_name').on('input', function() {
 	var $input = $(this);
 	$input.val(getAssetName($input.val()));
 });
+
+ClassicEditor
+.create( document.querySelector('#description' ))
+.catch( error => {
+console.error( error );
+});
