@@ -283,3 +283,23 @@ ClassicEditor
 .catch(error => {
 	console.error(error);
 });
+
+$('#end_data').datetimepicker({
+	bootcssVer: 3,
+	language: 'ru',
+	todayBtn: 'linked',
+	todayHighlight: true,
+	minuteStep: 10,
+	startDate: new Date(),
+	weekStart: 1,
+	//daysOfWeekDisabled: [0],
+	//clearBtn: true,
+}).on('changeDate', function(ev) {
+	$('input[name="end_data"]').val(ev.date.valueOf());
+});
+// datetimepicker bug!
+function datetimepickerReset(el) {
+	var $datetimepicker = $(el);
+	$datetimepicker.find('.datetimepicker-minutes, .datetimepicker-hours, .datetimepicker-months, .datetimepicker-years').css('display', 'none');
+	$datetimepicker.find('.datetimepicker-days').css('display', 'block');
+}
