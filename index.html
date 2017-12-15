@@ -53,10 +53,6 @@
 						<input type="text" class="form-control" id="campaignname" placeholder="Campaign name" name="compaign_name" required="">
 					</div>
 					<div class="form-group">
-						<label for="description">Compaign description</label>
-						<textarea class="form-control" id="description" rows="3" name="description" required=""></textarea>
-					</div>
-					<div class="form-group">
 						<label for="asset_name">Asset name</label>
 						<input type="text" class="form-control" id="asset_name" name="asset_name" required="">
 					</div>
@@ -76,13 +72,18 @@
 						<label for="shotdescription">Shot description</label>
 						<input type="text" class="form-control" id="shotdescription" placeholder="Shot description" name="short_description" required="">
 					</div>
-					<div class="form-group">
-						<label for="login">Username:</label>
-						<input type="text" class="form-control" id="login" name="login" aria-describedby="emailHelp" placeholder="Enter your login @golos" required="">
-					</div>
-					<div class="form-group">
-						<label for="password">Password:</label>
-						<input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Enter your password" required="">
+					<div class="card" style="margin-bottom: 1rem;">
+						<div class="card-body">
+							<h4 class="card-title">Golos authorization</h4>
+							<div class="form-group">
+								<label for="login">Username:</label>
+								<input type="text" class="form-control" id="login" name="login" aria-describedby="emailHelp" placeholder="Enter your login @golos" required="">
+							</div>
+							<div class="form-group">
+								<label for="password">Password:</label>
+								<input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Enter your password" required="">
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="end_data">End date</label>
@@ -115,17 +116,33 @@
 						<label for="location">Location</label>
 						<input type="text" class="form-control" id="location" name="location">
 					</div>
-					<div class="form-group">
-						<label for="facebook">Facebook</label>
-						<input type="url" class="form-control" id="facebook" name="facebook">
+					<div class="card" id="socials-add" style="margin-bottom: 1rem;">
+						<div class="card-body">
+							<h4 class="card-title">Socials</h4>
+							<div class="form-row" style="margin-bottom: 1rem;">
+								<div class="col-auto">
+									<label class="sr-only">Social:</label>
+									<select class="form-control" name="social-type[]">
+										<option selected>Choose social...</option>
+										<option value="vk">VK</option>
+										<option value="facebook">Facebook</option>
+										<option value="linkedin">LinkedIn</option>
+										<option value="google">Google+</option>
+									</select>
+								</div>
+								<div class="col-auto">
+									<label class="sr-only">Url:</label>
+									<input type="text" class="form-control" name="social[]" placeholder="http://...">
+								</div>
+								<div class="col-auto">
+									<button type="button" class="btn btn-primary" id="social-add-btn">Add</button>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="google">Google+</label>
-						<input type="url" class="form-control" id="google" name="google">
-					</div>
-					<div class="form-group">
-						<label for="linkedin">Linkedin</label>
-						<input type="url" class="form-control" id="linkedin" name="linkedin">
+						<label for="description">Compaign description</label>
+						<textarea class="form-control" id="description" rows="3" name="description" required=""></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>

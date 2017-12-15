@@ -243,3 +243,14 @@ $('#about_golosico_call_btn').on('click', function() {
 		position: 'top'
 	});
 });
+
+$('#social-add-btn').on('click', function() {
+	var $btn = $(this),
+		$row = $btn.parents('.form-row');
+	var $newRow = $row.clone();
+	$newRow.find('button').removeClass('btn-success').addClass('btn-danger remove').text('Remove');
+	$('#socials-add .card-body').append($newRow);
+});
+$('#socials-add').on('click', '.remove', function() {
+	$(this).parents('.form-row').remove();
+});
