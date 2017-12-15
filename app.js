@@ -120,7 +120,7 @@ $createCapaign.find('form').on('submit', function () {
     data[value.name] = value.value;
   });
 
-  var body = data.description;
+  var body = myEditor.getData();
   var totalAmountAsset = parseInt(data.softcap);
   var assetAmount = parseFloat(data.asset_amount);
   var golosAmount = parseFloat(data.golos_amount);
@@ -273,8 +273,13 @@ $('#asset_name').on('input', function() {
 	$input.val(getAssetName($input.val()));
 });
 
+var myEditor;
 ClassicEditor
-.create( document.querySelector('#description' ))
-.catch( error => {
-console.error( error );
+.create(document.querySelector('#description'))
+.then(editor => {
+	console.log('Editor was initialized', editor);
+	myEditor = editor;
+})
+.catch(error => {
+	console.error(error);
 });
