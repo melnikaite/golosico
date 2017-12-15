@@ -248,7 +248,7 @@ $('#social-add-btn').on('click', function() {
 	var $btn = $(this),
 		$row = $btn.parents('.form-row');
 	var $newRow = $row.clone();
-	$newRow.find('button').removeClass('btn-success').addClass('btn-danger remove').text('Remove');
+	$newRow.find('button').removeClass('btn-success').addClass('btn-danger remove').html('<span class="icon-cross"></span> Remove');
 	$('#socials-add .card-body').append($newRow);
 });
 $('#socials-add').on('click', '.remove', function() {
