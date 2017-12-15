@@ -255,20 +255,20 @@ $('#socials-add').on('click', '.remove', function() {
 	$(this).parents('.form-row').remove();
 });
 
+var $assetNamePrice = $('#asset_name_price');
+function getAssetName(value) {
+	ico.getPriceAssetName(value, function(err, res) {
+		$assetNamePrice.text(res);
+	});
+	return value.toUpperCase().replace(/[^A-Z]/g, '');
+}
+
 $('#campaign-name').on('input', function() {
 	var value = $(this).val();
 	$('#asset_name').val(getAssetName(value));
 });
 
-function getAssetName(value) {
-	return value.toUpperCase().replace(/[^A-Z]/g, '');
-}
-
-var $assetNamePrice = $('#asset_name_price');
 $('#asset_name').on('input', function() {
 	var $input = $(this);
 	$input.val(getAssetName($input.val()));
-	ico.getPriceAssetName($(this).val(), function(err, res) {
-		$assetNamePrice.text(res);
-	});
 });
