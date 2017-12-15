@@ -292,6 +292,7 @@ $('#end_data').datetimepicker({
 	minuteStep: 10,
 	startDate: new Date(),
 	weekStart: 1,
+	autoclose: true,
 	//daysOfWeekDisabled: [0],
 	//clearBtn: true,
 }).on('changeDate', function(ev) {
